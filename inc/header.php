@@ -16,4 +16,4 @@
 		</ul>
 	</nav>
 
-	<main>
+	<section class="container board">

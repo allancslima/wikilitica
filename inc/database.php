@@ -49,3 +49,30 @@
 	function find_all($table) {
 		return find($table);
 	}
+
+	function save($table = null, $data = null) {
+		$database = open_database();
+
+		$columns = null;
+		$values = null;
+
+		foreach ($data as $key => $value) {
+			$columns .= "`" . trim($key, "'") . "`,";
+			$values .= "'$value',";
+		}
+		
+		$columns = rtrim($columns, ',');
+		$values = rtrim($values, ',');
+		$sql = "INSERT INTO " . $table . "($columns)" . " VALUES " . "($values)";
+
+		try {
+			$database->query($sql);
+			$_SESSION['message'] = 'Estado cadastrado com sucesso';
+			$_SESSION['type'] = 'success';
+		} catch (Exception $e) {
+			$_SESSION['message'] = 'Não foi possível realizar a operação.';
+			$_SESSION['type'] = 'danger';
+		}
+
+		close_database($database);
+	}

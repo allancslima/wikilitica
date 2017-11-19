@@ -10,3 +10,10 @@
 		global $states;
 		$states = find_all('states');
 	}
+
+	function add() {
+		if (isset($_POST['state'])) {
+			save('states', $_POST['state']);
+			header('location: index.php');
+		}
+	}
