@@ -12,7 +12,7 @@
 			<h3><?php echo $state['name']; ?></h3>
 			<div>
 				<a class="btn btn-primary" href="">Visualizar</a>
-				<a class="btn btn-warning" href="">Editar</a>
+				<a class="btn btn-warning" href="edit.php?id=<?php echo $state['id']; ?>">Editar</a>
 				<a class="btn btn-danger" href="">Excluir</a>
 			</div>
 		</div>

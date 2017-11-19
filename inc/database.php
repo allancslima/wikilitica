@@ -19,13 +19,13 @@
 		}
 	}
 
-	function find($table, $id = null) {
+	function find($table = null, $id = null) {
 		$database = open_database();
 		$found = null;
 
 		try {
 			if ($id) {
-				$sql = 'SELECT * FROM ' . $table . ' WHERE id = ' . $id;
+				$sql = "SELECT * FROM " . $table . " WHERE `id` = $id";
 				$result = $database->query($sql);
 				
 				if ($result->num_rows > 0)
@@ -67,7 +67,29 @@
 
 		try {
 			$database->query($sql);
-			$_SESSION['message'] = 'Estado cadastrado com sucesso';
+			$_SESSION['message'] = 'Registro cadastrado com sucesso';
+			$_SESSION['type'] = 'success';
+		} catch (Exception $e) {
+			$_SESSION['message'] = 'Não foi possível realizar a operação.';
+			$_SESSION['type'] = 'danger';
+		}
+
+		close_database($database);
+	}
+
+	function update($table = null, $id = 0, $data = null) {
+		$database = open_database();
+
+		$items = null;
+		foreach ($data as $key => $value)
+			$items .= "`" . trim($key, "'") . "`" . "='$value',";
+		$items = rtrim($items, ',');
+
+		$sql = "UPDATE " . $table . " SET $items" . " WHERE `id` = $id";
+		
+		try {
+			$database->query($sql);
+			$_SESSION['message'] = 'Registro atualizado com sucesso';
 			$_SESSION['type'] = 'success';
 		} catch (Exception $e) {
 			$_SESSION['message'] = 'Não foi possível realizar a operação.';
