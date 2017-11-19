@@ -1,0 +1,48 @@
+body {
+	font-family: 'Open Sans', Helvetica, Arial, Sans-serif;
+	color: #212121;
+}
+h1, h2, h3 {
+	margin: 0;
+	font-family: 'Roboto Slab', Helvetica, Arial, Sans-serif;
+	font-weight: 400;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#nav-main {
+	background-color: #009688;
+}
+#nav-main > a {
+	text-decoration: none;
+	font-family: Pacifico, serif;
+	font-size: 28px;
+	color: #fff;
+}
+#nav-main ul {
+	list-style: none;
+	padding: 0;
+}
+#nav-main ul li a {
+	display: inline-block;
+	margin: 5px 0;
+	padding: 5px 0;
+	text-decoration: none;
+	color: #fff;
+}
+#nav-main ul li a:hover {
+	box-shadow: 0px 2px 0px #fff;
+}
+
+@media screen and (min-width: 768px) {
+	#nav-main {
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	#nav-main ul {
+		width: 70%;
+		flex-direction: row;
+	}	
+}
