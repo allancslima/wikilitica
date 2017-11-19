@@ -1,0 +1,11 @@
+CREATE DATABASE wikilitica
+DEFAULT CHARACTER SET utf8
+DEFAULT COLLATE utf8_general_ci;
+
+USE wikilitica;
+
+CREATE TABLE states (
+	`id`   INT(11) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`id`)
+) DEFAULT CHARSET = utf8;

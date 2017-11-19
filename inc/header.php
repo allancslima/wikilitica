@@ -16,4 +16,4 @@
 		</ul>
 	</nav>
 
-	<main class="container">
+	<main>
