@@ -35,8 +35,6 @@
 			} else {
 				view($id);
 			}
-		} else {
-			header('location: index.php');
 		}
 	}
 

@@ -5,7 +5,7 @@
 
 <?php include(HEADER_TEMPLATE); ?>
 
-<h2>+ Adicionar Estado</h2>
+<h2>+ Adicionar estado</h2>
 <form class="container" action="add.php" method="post">
 	<input type="text" name="state['name']" placeholder="Nome">
 	<button class="btn btn-primary" type="submit">Salvar</button>

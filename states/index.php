@@ -6,6 +6,7 @@
 <?php include(HEADER_TEMPLATE); ?>
 
 <h2>Estados</h2>
+
 <?php if ($states) : ?>
 	<?php foreach ($states as $state) : ?>
 		<div class="container data-item">	
@@ -20,6 +21,7 @@
 <?php else : ?>
 	<p>Nenhum registro encontrado.</p>
 <?php endif; ?>
-<a class="link-next-page" href="add.php">+ Adicionar Estado</a>
+
+<a class="link-next-page" href="add.php">+ Adicionar estado</a>
 
 <?php include(FOOTER_TEMPLATE);

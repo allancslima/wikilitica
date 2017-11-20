@@ -22,7 +22,7 @@
 	<?php else : ?>
 		<p>Nenhum registro encontrado.</p>
 	<?php endif; ?>
-	<a class="link-next-page" href="add.php?id=<?php echo $state['id']; ?>">+ Adicionar Cidade</a>
+	<a class="link-next-page" href="add.php?id=<?php echo $state['id']; ?>">+ Adicionar cidade</a>
 <?php endif; ?>
 
 <?php include(FOOTER_TEMPLATE); ?>
