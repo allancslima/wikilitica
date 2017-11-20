@@ -146,7 +146,7 @@
 		try {
 			
 			if ($is_parent && $child_table && $fk)
-				$database->query("DELETE FROM " . $child_table . " WHERE `$fk_name` = $id");
+				$database->query("DELETE FROM $child_table WHERE `$fk` = $id");
 			
 			$sql = "DELETE FROM " . $table . " WHERE `id` = " . $id;
 			$database->query($sql);
