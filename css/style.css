@@ -101,6 +101,10 @@ form input, button {
 	list-style: none;
 	padding: 0;
 }
+#nav-main ul li {
+	width: 100%;
+	text-align: center;
+}
 #nav-main ul li a {
 	display: inline-block;
 	margin: 5px 0;
