@@ -12,7 +12,7 @@ form {
 	width: 100%;
 	max-width: 250px;
 }
-form input, button {
+form input, textarea, button {
 	width: 100%;
 	box-sizing: border-box;
 	margin: 5px;
@@ -31,9 +31,13 @@ form input, button {
 	border: 1px solid #eee;
 	box-shadow: 0px 0px 5px #ccc;
 }
-.board h2 {
+.board > h2 {
 	width: 100%;
 	margin-bottom: 20px;
+}
+.board > p {
+	width: 100%;
+	margin-top: -10px;
 }
 .data-item {
 	flex-direction: row;
