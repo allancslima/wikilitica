@@ -11,7 +11,7 @@
 		<div class="container data-item">	
 			<h3><?php echo $state['name']; ?></h3>
 			<div>
-				<a class="btn btn-primary" href="">Visualizar</a>
+				<a class="btn btn-primary" href="view.php?id=<?php echo $state['id']; ?>">Visualizar</a>
 				<a class="btn btn-warning" href="edit.php?id=<?php echo $state['id']; ?>">Editar</a>
 				<a class="btn btn-danger" href="">Excluir</a>
 			</div>
@@ -20,6 +20,6 @@
 <?php else : ?>
 	<p>Nenhum registro encontrado.</p>
 <?php endif; ?>
-<a class="link-add" href="add.php">+ Adicionar Estado</a>
+<a class="link-next-page" href="add.php">+ Adicionar Estado</a>
 
-<?php include(FOOTER_TEMPLATE); ?>
+<?php include(FOOTER_TEMPLATE);

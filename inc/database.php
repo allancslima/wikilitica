@@ -19,21 +19,24 @@
 		}
 	}
 
-	function find($table = null, $id = null) {
+	function find($table = null, $id = null, $is_fk = false, $fk_name = null) {
 		$database = open_database();
 		$found = null;
 
 		try {
-			if ($id) {
+			if ($id && !$is_fk && !$fk_name) {
 				$sql = "SELECT * FROM " . $table . " WHERE `id` = $id";
 				$result = $database->query($sql);
 				
 				if ($result->num_rows > 0)
 					$found = $result->fetch_assoc();
 			} else {
-				$sql = 'SELECT * FROM ' . $table;
-				$result = $database->query($sql);
+				if ($is_fk && $fk_name)
+					$sql = "SELECT * FROM " . $table . " WHERE `$fk_name` = $id";
+				else
+					$sql = 'SELECT * FROM ' . $table;
 
+				$result = $database->query($sql);
 				if ($result->num_rows > 0)
 					$found = $result->fetch_all(MYSQLI_ASSOC);
 			}

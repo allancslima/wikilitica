@@ -11,6 +11,11 @@
 		$states = find_all('states');
 	}
 
+	function view($id) {
+		global $state;
+		$state = find('states', $id);
+	}
+
 	function add() {
 		if (isset($_POST['state'])) {
 			save('states', $_POST['state']);
@@ -28,8 +33,7 @@
 				update('states', $id, $state);
 				header('location: index.php');
 			} else {
-				global $state;
-				$state = find('states', $id);
+				view($id);
 			}
 		} else {
 			header('location: index.php');
