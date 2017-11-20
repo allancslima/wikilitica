@@ -41,3 +41,10 @@
 			}
 		}
 	}
+
+	function delete($id) {
+		$state_id = find('cities', $id)['state_id'];
+
+		remove('cities', $id);
+		header("location: index.php?id=$state_id");
+	}
