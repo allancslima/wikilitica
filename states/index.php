@@ -13,7 +13,7 @@
 			<div>
 				<a class="btn btn-primary" href="view.php?id=<?php echo $state['id']; ?>">Visualizar</a>
 				<a class="btn btn-warning" href="edit.php?id=<?php echo $state['id']; ?>">Editar</a>
-				<a class="btn btn-danger" href="">Excluir</a>
+				<a class="btn btn-danger" href="delete.php?id=<?php echo $state['id']; ?>">Excluir</a>
 			</div>
 		</div>
 	<?php endforeach; ?>

@@ -101,3 +101,24 @@
 
 		close_database($database);
 	}
+
+	function remove($table, $id, $is_parent = null, $child_table = null, $fk = null) {
+		$database = open_database();
+
+		try {
+			
+			if ($is_parent && $child_table && $fk)
+				$database->query("DELETE FROM " . $child_table . " WHERE `$fk_name` = $id");
+			
+			$sql = "DELETE FROM " . $table . " WHERE `id` = " . $id;
+			$database->query($sql);
+		
+		} catch (Exception $e) {
+			
+			$_SESSION['message'] = 'Não foi possível realizar a operação.';
+			$_SESSION['type'] = 'danger';
+		
+		}
+
+		close_database($database);
+	}

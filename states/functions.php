@@ -39,3 +39,8 @@
 			header('location: index.php');
 		}
 	}
+
+	function delete($id) {
+		remove('states', $id, true, 'cities', 'state_id');
+		header('location: index.php');
+	}
