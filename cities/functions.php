@@ -16,3 +16,10 @@
 		global $cities, $state;
 		$cities = find('cities', $state['id'], true, 'state_id');
 	}
+
+	function add() {
+		if (isset($_POST['city'])) {
+			save('cities', $_POST['city']);
+			header('location: index.php?id=' . $_GET['id']);
+		}
+	}
