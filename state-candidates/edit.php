@@ -1,26 +1,25 @@
 <?php
 	require_once('functions.php');
-	state($_GET['id']);
 	political_parties();
-	add();
+	edit();
 ?>
 
 <?php include(HEADER_TEMPLATE); ?>
 
-<?php if ($state) : ?>
-	<h2>+ Adicionar candidato para <?php echo $state['name']; ?></h2>
-	<form class="container" action="add.php?id=<?php echo $state['id']; ?>" method="post">
-		<input type="hidden" name="candidate['state_id']" value="<?php echo $_GET['id']; ?>">
-		<input type="text" name="candidate['name']" placeholder="Nome">
+<?php if ($candidate) : ?>
+	<h2>Editar candidato</h2>
+	<form class="container" action="edit.php?id=<?php echo $candidate['id']; ?>" method="post">
+		<input type="text" name="candidate['name']" value="<?php echo $candidate['name']; ?>" placeholder="Nome">
 		
 		<select name="candidate['gender']">
 			<option>Selecione o gênero</option>
 			<option value="M">Masculino</option>
 			<option value="F">Feminino</option>
 		</select>
+		Atual: <?php echo ($candidate['gender']=='M')?'Masculino':'Feminino'; ?>
 		
-		<input type="date" name="candidate['birth']">
-		<input type="text" name="candidate['profession']" placeholder="Profissão">
+		<input type="date" name="candidate['birth']" value="<?php echo $candidate['birth']; ?>">
+		<input type="text" name="candidate['profession']" value="<?php echo $candidate['profession']; ?>" placeholder="Profissão">
 		
 		<select name="candidate['role']">
 			<option>Selecione o cargo</option>
@@ -29,6 +28,7 @@
 			<option value="Deputado Federal">Deputado Federal</option>
 			<option value="Deputado Estadual">Deputado Estadual</option>
 		</select>
+		<?php echo "Atual: " . $candidate['role']; ?>
 		
 		<?php if ($political_parties) : ?>
 			<select name="candidate['political_party_id']">
@@ -37,6 +37,7 @@
 					<option value="<?php echo $political_party['id']; ?>"><?php echo $political_party['initials']; ?></option>
 				<?php endforeach; ?>
 			</select>
+			Atual: <?php echo find('political_parties', $candidate['political_party_id'])['initials']; ?>
 		<?php endif; ?>
 		
 		<button class="btn btn-primary" type="submit">Salvar</button>

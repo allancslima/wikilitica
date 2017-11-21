@@ -17,7 +17,7 @@
 				<h3><?php echo "<b>" . $candidate['role'] . "</b> - " . $candidate['name']; ?></h3>
 				<div>
 					<a class="btn btn-primary" href="view.php?id=<?php echo $state['id']; ?>">Visualizar</a>
-					<a class="btn btn-warning" href="edit.php?id=<?php echo $state['id']; ?>">Editar</a>
+					<a class="btn btn-warning" href="../state-candidates/edit.php?id=<?php echo $candidate['id']; ?>&state_id=<?php echo $state['id']; ?>">Editar</a>
 					<a class="btn btn-danger" href="../state-candidates/delete.php?id=<?php echo $candidate['id']; ?>">Excluir</a>
 				</div>
 			</div>
