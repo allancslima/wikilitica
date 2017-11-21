@@ -24,3 +24,10 @@
 			header('location: ' . BASEURL . 'states/view.php?id=' . $_GET['id']);
 		}
 	}
+
+	function delete($id) {
+		$state_id = find('state_candidates', $id)['state_id'];
+
+		remove('state_candidates', $id);
+		header('location: ../states/view.php?id=' . $state_id);
+	}

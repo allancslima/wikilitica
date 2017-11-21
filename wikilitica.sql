@@ -29,12 +29,12 @@ CREATE TABLE political_parties (
 CREATE TABLE state_candidates (
 	`id`                 INT(11) NOT NULL AUTO_INCREMENT,
 	`state_id`           INT(11) NOT NULL,
-    `political_party_id` INT(11) NOT NULL,
+	`political_party_id` INT(11) NOT NULL,
 	`name`               VARCHAR(50) NOT NULL,
 	`gender`             ENUM('M', 'F') NOT NULL,
 	`birth`              DATE,
 	`profession`         VARCHAR(50),
-    `role`               VARCHAR(30),
+	`role`               VARCHAR(30),
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`state_id`) REFERENCES states (`id`)
 ) DEFAULT CHARSET = utf8;

@@ -14,7 +14,12 @@
 	<?php if ($candidates): ?>
 		<?php foreach ($candidates as $candidate) : ?>
 			<div class="container data-item">
-				<h3><?php echo $candidate['role'] . " - " . $candidate['name']; ?></h3>
+				<h3><?php echo "<b>" . $candidate['role'] . "</b> - " . $candidate['name']; ?></h3>
+				<div>
+					<a class="btn btn-primary" href="view.php?id=<?php echo $state['id']; ?>">Visualizar</a>
+					<a class="btn btn-warning" href="edit.php?id=<?php echo $state['id']; ?>">Editar</a>
+					<a class="btn btn-danger" href="../state-candidates/delete.php?id=<?php echo $candidate['id']; ?>">Excluir</a>
+				</div>
 			</div>
 		<?php endforeach; ?>
 	<?php else : ?>
