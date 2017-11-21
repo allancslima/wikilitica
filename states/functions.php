@@ -5,6 +5,7 @@
 
 	$states = null;
 	$state = null;
+	$candidates = null;
 
 	function index() {
 		global $states;
@@ -14,6 +15,11 @@
 	function view($id) {
 		global $state;
 		$state = find('states', $id);
+	}
+
+	function state_candidates($id) {
+		global $candidates;
+		$candidates = find('state_candidates', $id, true, 'state_id');
 	}
 
 	function add() {
@@ -39,6 +45,6 @@
 	}
 
 	function delete($id) {
-		remove('states', $id, true, 'cities', 'state_id');
+		remove('states', $id, true, ['cities', 'state_candidates'], 'state_id');
 		header('location: index.php');
 	}

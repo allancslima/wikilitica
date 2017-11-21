@@ -140,13 +140,15 @@
 	/**
 	*  Removes records from parent and child tables
 	*/
-	function remove($table, $id, $is_parent = null, $child_table = null, $fk = null) {
+	function remove($table, $id, $is_parent = null, $child_tables = null, $fk = null) {
 		$database = open_database();
 
 		try {
 			
-			if ($is_parent && $child_table && $fk)
-				$database->query("DELETE FROM $child_table WHERE `$fk` = $id");
+			if ($is_parent && $child_tables && $fk) {
+				foreach ($child_tables as $child_table) 
+					$database->query("DELETE FROM $child_table WHERE `$fk` = $id");
+			}
 			
 			$sql = "DELETE FROM " . $table . " WHERE `id` = " . $id;
 			$database->query($sql);

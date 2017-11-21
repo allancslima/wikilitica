@@ -19,7 +19,7 @@
 		</div>
 	<?php endforeach; ?>
 <?php else : ?>
-	<p>Nenhum registro encontrado.</p>
+	<p>Nenhum partido cadastrado.</p>
 <?php endif; ?>
 
 <a class="link-next-page" href="add.php">+ Adicionar partido</a>

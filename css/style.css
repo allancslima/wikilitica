@@ -12,7 +12,7 @@ form {
 	width: 100%;
 	max-width: 250px;
 }
-form input, textarea, button {
+form input, textarea, select, button {
 	width: 100%;
 	box-sizing: border-box;
 	margin: 5px;
@@ -34,10 +34,6 @@ form input, textarea, button {
 .board > h2 {
 	width: 100%;
 	margin-bottom: 20px;
-}
-.board > p {
-	width: 100%;
-	margin-top: -10px;
 }
 .data-item {
 	flex-direction: row;
