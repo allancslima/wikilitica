@@ -36,5 +36,6 @@ CREATE TABLE state_candidates (
 	`profession`         VARCHAR(50),
 	`role`               VARCHAR(30),
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`state_id`) REFERENCES states (`id`)
+	FOREIGN KEY (`state_id`) REFERENCES states (`id`),
+    FOREIGN KEY (`political_party_id`) REFERENCES political_parties (`id`)
 ) DEFAULT CHARSET = utf8;

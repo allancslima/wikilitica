@@ -140,7 +140,7 @@
 	/**
 	*  Removes records from parent and child tables
 	*/
-	function remove($table, $id, $is_parent = null, $child_tables = null, $fk = null) {
+	function remove($table, $id, $is_parent = false, $child_tables = null, $fk = null) {
 		$database = open_database();
 
 		try {

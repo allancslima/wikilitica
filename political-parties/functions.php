@@ -39,6 +39,6 @@
 	}
 
 	function delete($id) {
-		remove('political_parties', $id);
+		remove('political_parties', $id, true, ['state_candidates'], 'political_party_id');
 		header('location: index.php');
 	}
