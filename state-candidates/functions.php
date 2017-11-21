@@ -7,6 +7,8 @@
 	$candidates = null;
 	$candidate = null;
 	$political_parties = null;
+	$political_party = null;
+	$realizations = null;
 	
 	function state($id) {
 		global $state;
@@ -18,9 +20,19 @@
 		$political_parties = find_all('political_parties');
 	}
 
+	function political_party($id) {
+		global $political_party;
+		$political_party = find('political_parties', $id);
+	}
+
 	function view($id) {
 		global $candidate;
 		$candidate = find('state_candidates', $id);
+	}
+
+	function realizations($id) {
+		global $realizations;
+		$realizations = find('candidates_realizations', $id, true, 'candidate_id');
 	}
 
 	function add() {
@@ -49,6 +61,6 @@
 	function delete($id) {
 		$state_id = find('state_candidates', $id)['state_id'];
 
-		remove('state_candidates', $id);
+		remove('state_candidates', $id, true, ['candidates_realizations'], 'candidate_id');
 		header('location: ../states/view.php?id=' . $state_id);
 	}

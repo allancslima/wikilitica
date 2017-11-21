@@ -39,3 +39,12 @@ CREATE TABLE state_candidates (
 	FOREIGN KEY (`state_id`) REFERENCES states (`id`),
     FOREIGN KEY (`political_party_id`) REFERENCES political_parties (`id`)
 ) DEFAULT CHARSET = utf8;
+
+CREATE TABLE candidates_realizations (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`candidate_id` INT(11) NOT NULL,
+	`body` TEXT NOT NULL,
+	`type` VARCHAR(20) NOT NULL,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`candidate_id`) REFERENCES state_candidates (`id`)
+) DEFAULT CHARSET = utf8;
