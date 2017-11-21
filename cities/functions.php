@@ -6,10 +6,16 @@
 	$state = null;
 	$cities = null;
 	$city = null;
+	$candidates = null;
 	
 	function state($id) {
 		global $state;
 		$state = find('states', $id);
+	}
+
+	function city_candidates($id) {
+		global $candidates;
+		$candidates = find('city_candidates', $id, true, 'city_id');
 	}
 
 	function index() {
@@ -45,6 +51,6 @@
 	function delete($id) {
 		$state_id = find('cities', $id)['state_id'];
 
-		remove('cities', $id);
+		remove('cities', $id, true, ['city_candidates'], 'city_id');
 		header("location: index.php?id=$state_id");
 	}
