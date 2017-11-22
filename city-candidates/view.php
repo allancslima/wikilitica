@@ -2,7 +2,10 @@
 	require_once('functions.php');
 	$id = $_GET['id'];
 
-	if (isset($id)) view($id);
+	if (isset($id)) {
+		view($id);
+		add_realization();
+	}
 ?>
 
 <?php include(HEADER_TEMPLATE); ?>
@@ -26,6 +29,9 @@
 			
 			<div class="container data-item">
 				<h4><?php echo "<b>{" . $realization['type'] . "}</b> " . $realization['body']; ?></h4>
+				<div>
+					<a class="btn btn-danger" href="delete_realization.php?id=<?php echo $realization['id']; ?>">Excluir</a>
+				</div>
 			</div>
 			
 		<?php endforeach ?>
@@ -35,6 +41,19 @@
 		<p>Nenhuma realização encontrada.</p>
 	
 	<?php endif; ?>
+
+	<br><br>
+	<p>Adicionar realização</p>
+	<form action="view.php?id=<?php echo $candidate['id']; ?>" method="post">
+		<input type="hidden" name="realization['candidate_id']" value='<?php echo $candidate['id']; ?>'">
+		<textarea name="realization['body']" placeholder="Texto"></textarea>
+		<select name="realization['type']">
+			<option>Selecione o tipo</option>
+			<option value="Pública">Pública</option>
+			<option value="Profissional">Profissional</option>
+		</select>
+		<button class="btn btn-primary" type="submit">Salvar</button>
+	</form>
 
 <?php endif; ?>
 

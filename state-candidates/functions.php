@@ -46,6 +46,13 @@
 		}
 	}
 
+	function add_realization() {
+		if (isset($_POST['realization'])) {
+			save('state_candidates_realizations', $_POST['realization']);
+			header('location: view.php?id=' . $_GET['id']);
+		}
+	}
+
 	function edit() {
 		$id = $_GET['id'];
 		$state_id = $_GET['state_id'];
@@ -66,4 +73,10 @@
 		$state_id = find('state_candidates', $id)['state_id'];
 		remove('state_candidates', $id, true, ['state_candidates_realizations'], 'candidate_id');
 		header('location: ../states/view.php?id=' . $state_id);
+	}
+
+	function delete_realization($id) {
+		$candidate_id = find('state_candidates_realizations', $id)['candidate_id'];
+		remove('state_candidates_realizations', $id);
+		header('location: view.php?id=' . $candidate_id);
 	}

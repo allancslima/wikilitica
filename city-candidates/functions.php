@@ -45,6 +45,13 @@
 		}
 	}
 
+	function add_realization() {
+		if (isset($_POST['realization'])) {
+			save('city_candidates_realizations', $_POST['realization']);
+			header('location: view.php?id=' . $_GET['id']);
+		}
+	}
+
 	function edit() {
 		$id = $_GET['id'];
 		$state_id = $_GET['state_id'];
@@ -65,4 +72,10 @@
 		$city_id = find('city_candidates', $id)['city_id'];
 		remove('city_candidates', $id, true, ['candidates_realizations'], 'candidate_id');
 		header('location: ../cities/view.php?id=' . $city_id);
+	}
+
+	function delete_realization($id) {
+		$candidate_id = find('city_candidates_realizations', $id)['candidate_id'];
+		remove('city_candidates_realizations', $id);
+		header('location: view.php?id=' . $candidate_id);
 	}
