@@ -8,7 +8,9 @@
 <h2>Partidos</h2>
 
 <?php if ($political_parties) : ?>
+
 	<?php foreach ($political_parties as $political_party) : ?>
+		
 		<div class="container data-item">	
 			<h3><?php echo $political_party['initials'] . " - " . $political_party['name']; ?></h3>
 			<div>
@@ -17,11 +19,15 @@
 				<a class="btn btn-danger" href="delete.php?id=<?php echo $political_party['id']; ?>">Excluir</a>
 			</div>
 		</div>
+	
 	<?php endforeach; ?>
+
 <?php else : ?>
+	
 	<p>Nenhum partido cadastrado.</p>
+
 <?php endif; ?>
 
 <a class="link-next-page" href="add.php">+ Adicionar partido</a>
 
-<?php include(FOOTER_TEMPLATE);
+<?php include(FOOTER_TEMPLATE); ?>

@@ -10,6 +10,14 @@
 	$political_party = null;
 	$realizations = null;
 	
+	function view($id) {
+		global $candidate;
+		$candidate = find('state_candidates', $id);
+		state($candidate['state_id']);
+		political_party($candidate['political_party_id']);
+		realizations($candidate['id']);
+	}
+
 	function state($id) {
 		global $state;
 		$state = find('states', $id);
@@ -25,11 +33,6 @@
 		$political_party = find('political_parties', $id);
 	}
 
-	function view($id) {
-		global $candidate;
-		$candidate = find('state_candidates', $id);
-	}
-
 	function realizations($id) {
 		global $realizations;
 		$realizations = find('state_candidates_realizations', $id, true, 'candidate_id');
@@ -38,29 +41,29 @@
 	function add() {
 		if (isset($_POST['candidate'])) {
 			save('state_candidates', $_POST['candidate']);
-			header('location: ' . BASEURL . 'states/view.php?id=' . $_GET['id']);
+			$state_id = $_GET['id'];
+			header('location: ../states/view.php?id=' . $state_id);
 		}
 	}
 
 	function edit() {
-		if (isset($_GET['id'])) {
-			$id = $_GET['id'];
-			$state_id = $_GET['state_id'];
+		$id = $_GET['id'];
+		$state_id = $_GET['state_id'];
+		
+		if (isset($id)) {
 
 			if (isset($_POST['candidate'])) {
-				$candidate = $_POST['candidate'];
-
-				update('state_candidates', $id, $candidate);
+				update('state_candidates', $id, $_POST['candidate']);
 				header('location: ../states/view.php?id=' . $state_id);
 			} else {
 				view($id);
 			}
+		
 		}
 	}
 
 	function delete($id) {
 		$state_id = find('state_candidates', $id)['state_id'];
-
 		remove('state_candidates', $id, true, ['state_candidates_realizations'], 'candidate_id');
 		header('location: ../states/view.php?id=' . $state_id);
 	}

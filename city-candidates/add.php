@@ -8,6 +8,7 @@
 <?php include(HEADER_TEMPLATE); ?>
 
 <?php if ($city) : ?>
+
 	<h2>+ Adicionar candidato para <?php echo $city['name']; ?></h2>
 	<form class="container" action="add.php?id=<?php echo $city['id']; ?>" method="post">
 		<input type="hidden" name="candidate['city_id']" value="<?php echo $_GET['id']; ?>">
@@ -29,16 +30,19 @@
 		</select>
 		
 		<?php if ($political_parties) : ?>
+
 			<select name="candidate['political_party_id']">
 				<option>Selecione o partido</option>
 				<?php foreach ($political_parties as $political_party) : ?>
 					<option value="<?php echo $political_party['id']; ?>"><?php echo $political_party['initials']; ?></option>
 				<?php endforeach; ?>
 			</select>
+			
 		<?php endif; ?>
 		
 		<button class="btn btn-primary" type="submit">Salvar</button>
 	</form>
+
 <?php endif; ?>
 
 <?php include(FOOTER_TEMPLATE); ?>

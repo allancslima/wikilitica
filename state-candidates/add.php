@@ -1,13 +1,18 @@
 <?php
 	require_once('functions.php');
-	state($_GET['id']);
-	political_parties();
-	add();
+	$state_id = $_GET['id'];
+
+	if (isset($state_id)) {
+		state($state_id);
+		political_parties();
+		add();
+	}
 ?>
 
 <?php include(HEADER_TEMPLATE); ?>
 
 <?php if ($state) : ?>
+
 	<h2>+ Adicionar candidato para <?php echo $state['name']; ?></h2>
 	<form class="container" action="add.php?id=<?php echo $state['id']; ?>" method="post">
 		<input type="hidden" name="candidate['state_id']" value="<?php echo $_GET['id']; ?>">
@@ -31,16 +36,19 @@
 		</select>
 		
 		<?php if ($political_parties) : ?>
+
 			<select name="candidate['political_party_id']">
 				<option>Selecione o partido</option>
 				<?php foreach ($political_parties as $political_party) : ?>
 					<option value="<?php echo $political_party['id']; ?>"><?php echo $political_party['initials']; ?></option>
 				<?php endforeach; ?>
 			</select>
+			
 		<?php endif; ?>
 		
 		<button class="btn btn-primary" type="submit">Salvar</button>
 	</form>
+
 <?php endif; ?>
 
 <?php include(FOOTER_TEMPLATE); ?>

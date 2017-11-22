@@ -12,8 +12,8 @@
 	<nav id="nav-main" class="container">
 		<a href="<?php echo BASEURL; ?>">Wikilítica</a>
 		<ul class="container">
-			<li><a href="<?php echo BASEURL; ?>states">ESTADOS</a></li>
-			<li><a href="<?php echo BASEURL; ?>political-parties">PARTIDOS</a></li>
+			<li><a href="<?php echo BASEURL; ?>states/index.php">ESTADOS</a></li>
+			<li><a href="<?php echo BASEURL; ?>political-parties/index.php">PARTIDOS</a></li>
 		</ul>
 	</nav>
 

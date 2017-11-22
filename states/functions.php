@@ -15,11 +15,12 @@
 	function view($id) {
 		global $state;
 		$state = find('states', $id);
+		candidates($id);
 	}
 
-	function state_candidates($id) {
+	function candidates($state_id) {
 		global $candidates;
-		$candidates = find('state_candidates', $id, true, 'state_id');
+		$candidates = find('state_candidates', $state_id, true, 'state_id');
 	}
 
 	function add() {
@@ -30,17 +31,18 @@
 	}
 
 	function edit() {
-		if (isset($_GET['id'])) {
-			$id = $_GET['id'];
-			
+		$id = $_GET['id'];
+		
+		if (isset($id)) {
+
 			if (isset($_POST['state'])) {
 				$state = $_POST['state'];
-
 				update('states', $id, $state);
 				header('location: index.php');
 			} else {
 				view($id);
 			}
+				
 		}
 	}
 

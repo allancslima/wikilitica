@@ -8,7 +8,9 @@
 <h2>Estados</h2>
 
 <?php if ($states) : ?>
+
 	<?php foreach ($states as $state) : ?>
+
 		<div class="container data-item">	
 			<h3><?php echo $state['name']; ?></h3>
 			<div>
@@ -17,9 +19,13 @@
 				<a class="btn btn-danger" href="delete.php?id=<?php echo $state['id']; ?>">Excluir</a>
 			</div>
 		</div>
+	
 	<?php endforeach; ?>
+
 <?php else : ?>
+
 	<p>Nenhum estado cadastrado.</p>
+
 <?php endif; ?>
 
 <a class="link-next-page" href="add.php">+ Adicionar estado</a>

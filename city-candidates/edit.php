@@ -7,6 +7,7 @@
 <?php include(HEADER_TEMPLATE); ?>
 
 <?php if ($candidate) : ?>
+
 	<h2>Editar candidato</h2>
 	<form class="container" action="edit.php?id=<?php echo $candidate['id']; ?>" method="post">
 		<input type="text" name="candidate['name']" value="<?php echo $candidate['name']; ?>" placeholder="Nome">
@@ -31,6 +32,7 @@
 		<?php echo "Atual: " . $candidate['role']; ?>
 		
 		<?php if ($political_parties) : ?>
+			
 			<select name="candidate['political_party_id']">
 				<option>Selecione o partido</option>
 				<?php foreach ($political_parties as $political_party) : ?>
@@ -38,10 +40,12 @@
 				<?php endforeach; ?>
 			</select>
 			Atual: <?php echo find('political_parties', $candidate['political_party_id'])['initials']; ?>
+		
 		<?php endif; ?>
 		
 		<button class="btn btn-primary" type="submit">Salvar</button>
 	</form>
+
 <?php endif; ?>
 
 <?php include(FOOTER_TEMPLATE); ?>

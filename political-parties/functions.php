@@ -24,21 +24,21 @@
 	}
 
 	function edit() {
-		if (isset($_GET['id'])) {
-			$id = $_GET['id'];
+		$id = $_GET['id'];
+		
+		if (isset($id)) {
 			
 			if (isset($_POST['political_party'])) {
-				$political_party = $_POST['political_party'];
-
-				update('political_parties', $id, $political_party);
+				update('political_parties', $id, $_POST['political_party']);
 				header('location: index.php');
 			} else {
 				view($id);
 			}
+
 		}
 	}
 
 	function delete($id) {
-		remove('political_parties', $id, true, ['state_candidates'], 'political_party_id');
+		remove('political_parties', $id, true, ['state_candidates', 'city_candidates'], 'political_party_id');
 		header('location: index.php');
 	}
